@@ -1,3 +1,6 @@
+// Articles - Display a list of Article components
+//////Articles listing them out! by mapping throught the OneArticle
+//////and returning all the articles! 
 import React from 'react';
 import PropTypes from 'prop-types';
 import OneArticle from './OneArticle';
