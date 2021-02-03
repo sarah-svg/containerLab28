@@ -1,19 +1,24 @@
 // Search - Display a form used to search articles by term
+////with input
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Search = ({ onChange }) => {
-  <input type="text"
-    onChange={onChange} />;
+const SearchBox = ({ onSubmit }) => {
+  <form onSubmit={onSubmit}>
+    <input type="text" />
+    <input type="submit" value="Search" />
+  </form>;
 
   return (
-    <input type="text"
-      onChange={onChange} />
+    <form onSubmit={onSubmit}>
+      <input type="text" />
+      <input type="submit" value="Search" />
+    </form>
   );
 };
 
-Search.propTypes = {
-  onChange: PropTypes.func.isRequired
+SearchBox.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 };
 
-export default Search;
+export default SearchBox;
