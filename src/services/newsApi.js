@@ -1,13 +1,10 @@
-export const news = () => {
-  // eslint-disable-next-line max-len
-  return fetch ('http://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=${NEWS_API_KEY}')
-    .then(res => res.json())
-    .then(json => json.result);
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+
+const URL = `http://newsapi.org/v2/top-headlines?
+country=us&apiKey=${NEWS_API_KEY}`;
+
+const getArticles = () => {
+  return fetch(URL).then((res) => res.json);
 };
 
-export const everything = () => {
-  // eslint-disable-next-line max-len
-  return fetch ('https://newsapi.org/docs/endpoints/everything' + 'apiKey=${NEWS_API_KEY}')
-    .then(res => res.json())
-    .then(json => json.result);
-};
+export default getArticles;

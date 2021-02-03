@@ -10,17 +10,12 @@ const ArticleDisplay = ({ title, author, description }) => (
     <h2>{title}</h2>
     <h3>{author}</h3>
     <span>{description}</span>
-
   </div>
- 
-
-
 );
 ArticleDisplay.propTypes = {
   title: PropTypes.sting.isRequired,
   author: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired
 };
-
 
 export default ArticleDisplay;
