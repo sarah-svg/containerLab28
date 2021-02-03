@@ -5,17 +5,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArticleDisplay = ({ title, author, description }) => (
+const OneArticle = ({ title, author, description }) => (
   <div data-testid="display">
     <h2>{title}</h2>
     <h3>{author}</h3>
     <span>{description}</span>
   </div>
 );
-ArticleDisplay.propTypes = {
+OneArticle.propTypes = {
   title: PropTypes.sting.isRequired,
   author: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired
 };
 
-export default ArticleDisplay;
+export default OneArticle;
