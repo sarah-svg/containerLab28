@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticlesList component renders  1`] = `
+<DocumentFragment>
+  <ul />
+</DocumentFragment>
+`;
+
+exports[`ArticlesList component renders ArticlesList 1`] = `
+<DocumentFragment>
+  <ul />
+</DocumentFragment>
+`;
+
+exports[`ArticlesList component renders by mapping through and listing the articles 1`] = `
+<DocumentFragment>
+  <ul />
+</DocumentFragment>
+`;
