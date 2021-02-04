@@ -1,37 +1,45 @@
+  
 import React, { Component } from 'react';
-import getArticles from '../../services/newsApi';
-import searchArticles from '../../services/searchArticles';
+import getArticles from '../services/newsApi';
+import searchArticles from '../services/searchArticles';
 import Main from '../Main';
 import ListOfArticles from '../news/ListOfArticles';
 
 export default class NewsSearch extends Component {
-    state = {
-      articles: [],
-      loading: false,
-      search: []
-    }
+  state = {
+    loading: true,
+    articles: [],
+    search: '',
+  };
 
-    componentDidMount() {
-      return getArticles()
-        .then(({ articles }) => 
-          this.setState({ articles, loading: true }));
-    }
-    handleSearch = ({ target }) => {
-      if(target.value) {
-        return searchArticles(target.value).then(({ articles }) => {
-          this.setState({ articles });
-        });
-      }
-    };
-    render() {
-      const { articles, loading } = this.state;
-      const { handleSearch } = this;
-      return (
-        <>
-          <Main handleSearch={handleSearch} />
-          {loading ? <>Loading...</> : <ListOfArticles articles={articles} />}
-        </>
+  handleSearch = ({ target }) => {
+    if(target.value.trim()) {
+      searchArticles(target.value).then(({ articles }) =>
+        this.setState({ articles, search: target.value })
       );
+      this.setState({ search: target.value.trim() });
     }
-}
+  };
 
+
+  componentDidMount() {
+    return getArticles().then(({ articles }) =>
+      this.setState({ articles, loading: false })
+    );
+  }
+
+  render() {
+    const { articles, loading, search } = this.state;
+    const { handleSearch } = this;
+    return (
+      <>
+        <Main handleSearch={handleSearch} />
+        {loading ? (
+          <>Loading...</>
+        ) : (
+          <ListOfArticles articles={articles} search={search} />
+        )}
+      </>
+    );
+  }
+}

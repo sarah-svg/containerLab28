@@ -10,5 +10,4 @@ const getArticles = () => {
   return fetch(URL).then((res) => res.json);
 };
 
-
 export default getArticles;
