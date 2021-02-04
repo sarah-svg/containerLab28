@@ -12,9 +12,9 @@ const OneArticle = ({ title, author, description }) => (
   </div>
 );
 OneArticle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   author: PropTypes.string,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
 
 export default OneArticle;
