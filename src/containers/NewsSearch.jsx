@@ -1,9 +1,8 @@
-  
 import React, { Component } from 'react';
-import getArticles from '../services/newsApi';
+import ArticlesList from '../components/news/ArticlesList';
+import getArticles from '../services/getArticles';
+import Header from '../components/home/Home';
 import searchArticles from '../services/searchArticles';
-import Main from '../Main';
-import ListOfArticles from '../news/ListOfArticles';
 
 export default class NewsSearch extends Component {
   state = {
@@ -11,6 +10,12 @@ export default class NewsSearch extends Component {
     articles: [],
     search: '',
   };
+
+  componentDidMount() {
+    getArticles().then(({ articles }) =>
+      this.setState({ articles, loading: false })
+    );
+  }
 
   handleSearch = ({ target }) => {
     if(target.value.trim()) {
@@ -21,23 +26,16 @@ export default class NewsSearch extends Component {
     }
   };
 
-
-  componentDidMount() {
-    return getArticles().then(({ articles }) =>
-      this.setState({ articles, loading: false })
-    );
-  }
-
   render() {
     const { articles, loading, search } = this.state;
     const { handleSearch } = this;
     return (
       <>
-        <Main handleSearch={handleSearch} />
+        <Header handleSearch={handleSearch} />
         {loading ? (
           <>Loading...</>
         ) : (
-          <ListOfArticles articles={articles} search={search} />
+          <ArticlesList articles={articles} search={search} />
         )}
       </>
     );

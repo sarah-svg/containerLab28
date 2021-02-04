@@ -1,5 +1,3 @@
-// Search - Display a form used to search articles by term
-////with input
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,7 +6,11 @@ export default class Search extends Component {
     const { handleSearch } = this.props;
     return (
       <form style={{ textAlign: 'center' }}>
-        <input onChange={handleSearch} placeholder="Search all articles..." />
+        <input
+          data-testid="search-input"
+          onChange={handleSearch}
+          placeholder="Search all articles..."
+        />
       </form>
     );
   }
